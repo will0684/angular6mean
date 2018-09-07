@@ -36,7 +36,7 @@ export class ListComponent implements OnInit {
 
   // Deletes the selected issue and refreshes the document view.
   deleteIssue(id) {
-    this.issueService.deleteIssue(id).subscribe(() => {
+    this.issueService.deleteIssue(id).then(() => {
       this.fetchIssues();
     });
   }

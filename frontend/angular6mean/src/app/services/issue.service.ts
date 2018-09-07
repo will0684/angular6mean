@@ -1,54 +1,59 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Issue } from '../models/issue.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IssueService {
-
-  // Set in /backend/server.js
-  uri = 'http://localhost:4000';
+  // Declare issue references
+  private issueDoc: AngularFirestoreDocument<Issue>;
+  issue: Observable<Issue>;
 
   // The name of your MongoDB database collection.
   collection = 'issues';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private db: AngularFirestore) { }
 
   // Fetches all documents.
   getIssues() {
-    return this.http.get(`${this.uri}/${this.collection}`);
+    return this.db.collection(`${this.collection}`).valueChanges();
   }
 
   // Fetches a single document by _id.
   getIssueById(id) {
-    return this.http.get(`${this.uri}/issue/${id}`);
+    this.issueDoc = this.db.collection(`${this.collection}`).doc(id);
+    return this.issueDoc.valueChanges();
   }
 
   // Creates a new document.
-  addIssue(title, resposible, description, severity) {
-    const issue = {
+  addIssue(title, responsible, description, severity) {
+    const newIssueRef = this.db.collection(`${this.collection}`).ref.doc();
+    const id = newIssueRef.id;
+    return newIssueRef.set({
+      id: id,
       title: title,
-      responsible: resposible,
+      responsible: responsible,
       description: description,
       severity: severity
-    };
-    return this.http.post(`${this.uri}/${this.collection}/add`, issue);
+    });
   }
 
   // Updates an existing document.
-  updateIssue(id, title, resposible, description, severity, status) {
-    const issue = {
+  updateIssue(id, title, responsible, description, severity, status) {
+    return this.db.collection(`${this.collection}`).doc(`${id}`).update({
       title: title,
-      responsible: resposible,
+      responsible: responsible,
       description: description,
       severity: severity,
       status: status
-    };
-    return this.http.post(`${this.uri}/${this.collection}/update/${id}`, issue);
+    });
   }
 
   // Deletes an existing document.
   deleteIssue(id) {
-    return this.http.get(`${this.uri}/${this.collection}/delete/${id}`);
+    return this.db.collection(`${this.collection}`).doc(`${id}`).delete();
   }
 }

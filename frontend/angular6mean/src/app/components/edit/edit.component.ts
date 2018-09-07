@@ -48,7 +48,7 @@ export class EditComponent implements OnInit {
   // Updates the document with input data and redirects to the /list route.
   updateIssue(title, responsible, description, severity, status) {
     this.issueService.updateIssue(this.id, title, responsible, description, severity,
-      status).subscribe(() => {
+      status).then(() => {
         this.router.navigate(['/list']);
       });
   }

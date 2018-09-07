@@ -28,10 +28,10 @@
         {{ issue.status }}
       </td>
       <td>
-        <button (click)="editIssue(issue._id)">
+        <button (click)="editIssue(issue.id)">
           Edit Issue
         </button>
-        <button (click)="deleteIssue(issue._id)">
+        <button (click)="deleteIssue(issue.id)">
           Delete Issue
         </button>
       </td>

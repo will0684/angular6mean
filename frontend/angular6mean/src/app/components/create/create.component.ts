@@ -12,7 +12,7 @@ export class CreateComponent implements OnInit {
 
   createForm: FormGroup;
 
-  constructor(private issue: IssueService, private router: Router, private formBuild: FormBuilder) { 
+  constructor(private issueService: IssueService, private router: Router, private formBuild: FormBuilder) { 
       // Creates the createForm schema with validations.
     this.createForm = this.formBuild.group({
       title: ['', Validators.required],
@@ -27,7 +27,7 @@ export class CreateComponent implements OnInit {
 
   // Adds a new document with the entered data and redirects to the /list route.
   addIssue(title, responsible, description, severity) {
-    this.issue.addIssue(title, responsible, description, severity).subscribe(() => {
+    this.issueService.addIssue(title, responsible, description, severity).then(() => {
       this.router.navigate(['/list']);
     });
   }
