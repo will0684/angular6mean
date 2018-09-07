@@ -1,15 +1,15 @@
 <h1>Edit Issue</h1>
 
 <form [formGroup]="updateForm">
-  <label>Issue Title: </label>
-  <input type="text" placeholder="Issue Title" formControlName="title" #title>
+  <label for="issue-input">Issue Title: </label>
+  <input id="issue-input" type="text" placeholder="Issue Title" formControlName="title" #title>
   <p>
-  <label>Responsible: </label>
-  <input type="text" placeholder="Responsible" formControlName="responsible" #responsible>
+  <label for="responsible-input">Responsible: </label>
+  <input id="responsible-input" type="text" placeholder="Responsible" formControlName="responsible" #responsible>
   </p>
   <p>
-  <label>Description: </label>
-  <input type="text" placeholder="Description" formControlName="description" #description>
+  <label for="description-input">Description: </label>
+  <input id="description-input" type="text" placeholder="Description" formControlName="description" #description>
   </p>
   <p>
   <label>Severity: </label>
