@@ -4,19 +4,32 @@
 <h1>Edit Issue</h1>
 
 <form [formGroup]="updateForm">
+  <label>Issue Title: </label>
   <input type="text" placeholder="Issue Title" formControlName="title" #title>
+  <p>
+  <label>Responsible: </label>
   <input type="text" placeholder="Responsible" formControlName="responsible" #responsible>
+  </p>
+  <p>
+  <label>Description: </label>
   <input type="text" placeholder="Description" formControlName="description" #description>
+  </p>
+  <p>
+  <label>Severity: </label>
   <select placeholder="Severity" formControlName="severity" #severity>
     <option value="Low">Low</option>
     <option value="Medium">Medium</option>
     <option value="High">High</option>
   </select>
+  </p>
+  <p>
+  <label>Status: </label>
   <select placeholder="Status" formControlName="status" #status>
     <option value="Open">Open</option>
     <option value="Pending">Pending</option>
     <option value="Closed">Closed</option>
   </select>
+  </p>
 </form>
 
 <br/>
