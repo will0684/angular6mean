@@ -12,22 +12,22 @@
 
   <tbody>
     <tr *ngFor="let issue of issues">
-      <td>
+      <td class="table-cell">
         {{ issue.title }}
       </td>
-      <td>
+      <td class="table-cell">
         {{ issue.responsible }}
       </td>
-      <td>
+      <td class="table-cell">
         {{ issue.description }}
       </td>
-      <td>
+      <td class="table-cell">
         {{ issue.severity }}
       </td>
-      <td>
+      <td class="table-cell">
         {{ issue.status }}
       </td>
-      <td>
+      <td class="table-cell" id="action-buttons">
         <button (click)="editIssue(issue.id)">
           Edit Issue
         </button>
