@@ -1,15 +1,6 @@
 # angular6mean
-A very simple MEAN(MongoDB, Express, Angular, Node.JS) application. Practice for full stack knowledge.
-
-Run MongoDB:
-1. ``cd backend``
-2. ``mongod --dbpath ./data``
-3. Running on port 27017
-
-Run Express/Node.js:
-1. ``cd backend``
-2. ``npm run dev``
-3. Running on port 4000
+This WAS very simple MEAN(MongoDB, Express, Angular, Node.JS) application. Practice for full stack knowledge.
+It is NOW an Angular-built frontend using Cloud FIrestore backend.
 
 Run Angular frontend:
 1. ``cd frontend``
